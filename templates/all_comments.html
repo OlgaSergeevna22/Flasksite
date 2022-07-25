@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Все комментарии
+{%endblock%}
+
+{%block body%}
+<div class="container">
+    <h1>Все комментарии</h1>
+    {%if comments|length>0 %}
+    {%for el in comments%}
+    <div class="alert alert-info">
+        <p><b>Создано: {{el.date.date()}}</b></p>
+        <h2>{{el.title}}</h2>
+        <p>{{el.text}}</p>
+        <a href="/comments/{{el.id}}" class="btn btn.warning" style=" border: 1px solid MidnightBlue " >Читать всё...</a>
+    </div>
+
+    {%endfor%}
+    {%else%}
+    <p>Комментарий на сайте нет</p>
+    {%endif%}
+</div>
+
+{%endblock%}
