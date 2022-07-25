@@ -1,7 +1,26 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///animal.db'
+app.config['QLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+    date = db.Column(db.DateTime, default=datetime.now)
+
+    def __repr__(self):
+        return '<Article %r' % self.id
+
+
+@app.route('/comment')
+def comment():
+    return render_template('comment.html')
+
 
 
 @app.route('/')

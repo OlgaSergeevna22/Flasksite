@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Комментарии
+{%endblock%}
+
+{%block body%}
+<h1 class="container">Оставьте комментарий</h1>
+<form class="container">
+    <input type="text" name="title" id="title" class="container form-control" placeholder="Введите заголовок комментария"><br>
+    <textarea name="text" id="text" class="container form-control" placeholder="Введите Ваш комментарий"></textarea><br>
+    <input type="submit" class="btn btn-success" value="Добавить">
+
+</form>
+
+{%endblock%}
